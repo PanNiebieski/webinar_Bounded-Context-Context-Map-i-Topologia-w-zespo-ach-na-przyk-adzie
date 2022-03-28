@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bounded Context, Context Map i Topologia w zespołach na przykładzie</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,900&amp;subset=latin-ext" rel="stylesheet" />
+    <!-- Shower Theme -->
+    <link rel="stylesheet" href="vendors/shower-ribbon/styles/screen-16x9.css" />
+    <link rel="stylesheet" href="vendors/shower-CezaryWalenciuk/styles/main.css" />
+    <!-- Prism.js -->
+    <link rel="stylesheet" href="vendors/prism/prism-my.css" />
+    <link rel="stylesheet" href="vendors/prism/custom-prism.css" />
+    <link rel="stylesheet" href="codegrid.css" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wszysztko o Dependency Injection w ASP.NET Core">
+    <meta property="og:description" content="Presentation about Event Storming,CQRS and Event Driven Design">
+    <meta property="og:url" content="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/">
+    <meta property="og:site_name" content="Wszysztko o Dependency Injection w ASP.NET Core">
+    <meta property="og:image" content="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/FacebookImageForMainPage.jpg"><meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:title" content="Wszysztko o Dependency Injection w ASP.NET Core">
+    <meta name="twitter:description" content="Presentation for 4Developers about .NET 6,C# 10, ASP.NET Core">
+    <meta name="twitter:image" content="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/FacebookImageForMainPage.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@walenciukc">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/icon/icon16x16.png">
+    <link rel="apple-touch-icon" href="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/icon180x180.png">
+    <link rel="shortcut icon" href="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/icon16x16.png">
+    <meta name="msapplication-square150x150logo" content="https://panniebieski.github.io/webinar-event-storming-cqrs-event-driven-design/forSocialMedia/icon180x180.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+</head>
+<body class="shower list">
+    <header class="caption">
+        <h1>Bounded Context, Context Map i Topologia w zespołach na przykładzie</h1>
+        <p></p>
+    </header>
+    <section class="slide front-page">
+
+        <div class="details">
+            <!-- 1. Avatar -->
+
+
+            <h2>Cezary Walenciuk</h2>
+
+            <!-- 3. Presentation title -->
+            <h2 class="bigbig"><strong style="font-size: 35px;  line-height: 1.3;">
+
+                    <span class=" titlec3">Bounded Context</span><span class=" titlec4">,</span>
+                    <br />
+                    <span class="titlec1">Context Map</span>
+                    <span class=" titlec4 ">i </span>
+                        <span class=" titlec5 ">Topologia</span>
+                        <span class="titlec4">
+                         w zespołach na przykładzie</span></strong></h2>
+
+                        
+
+            <!-- 5. Contact the speaker -->
+            <h2><a href="https://twitter.com/WalenciukC">@walenciukC</a></h2>
+        </div>
+        <div>
+
+
+            <!-- 2. Speaker -->
+
+        </div>
+        <div class="imag">
+            <img src="images/my-avatar.jpg" alt="Speaker">
+        </div>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/46.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/1.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/2.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/3.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/4.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/5.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/6.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/7.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/8.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/9.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/10.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/11.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/12.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/13.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/14.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/15.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/16.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/17.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/18.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/19.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/20.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/21.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/22.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/23.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/24.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/25.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/26.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/27.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/28.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/29.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/30.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/31.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/33.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/34.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/35.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/36.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/37.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/38.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/39.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/40.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/41.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/42.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/43.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/44.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/45.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/46.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/47.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/48.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/49.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/50.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/51.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/52.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/53.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/54.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/55.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/56.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/57.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/58.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/59.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/60.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/61.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/62.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/63.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/64.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/65.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/66.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/67.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/68.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/69.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/70.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/71.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/72.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/73.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/74.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/1/75.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    
+
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/1.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/2.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/3.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/4.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/5.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/6.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/7.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/8.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/9.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/10.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/11.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/12.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/13.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/14.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/15.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/16.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/17.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/18.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/19.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/20.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/21.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/22.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/23.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/24.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/25.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/26.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/27.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/28.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/29.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/30.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/31.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/32.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/33.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/34.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/35.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/36.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/37.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/38.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/39.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/40.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/41.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/42.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/43.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/44.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/45.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+    <section class="slide" style="background-color:black">
+        <figure>
+            <img class="cover" src="slides/2/46.png" alt="blog">
+            <figcaption class="white">CW 2022</figcaption>
+        </figure>
+    </section>
+
+    <!-- <div class="progress"></div> -->
+    <footer class="badge badge-top-left">
+        <a href="#" class="fullscreen">Fullscreen</a>
+    </footer>
+
+    <script src="vendors/gamepad/gamepad.js"></script>
+    <script src="vendors/shower/shower.min.js"></script>
+    <script src="vendors/shower-gamepad/shower.gamepad.js"></script>
+
+    <!-- Prism.js -->
+    <script src="vendors/prism/prism.js"></script>
+    <script src="vendors/prism/custom-prism.js"></script>
+
+</body>
+
+</html>
